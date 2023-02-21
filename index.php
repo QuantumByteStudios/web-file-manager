@@ -37,48 +37,13 @@
   <div class="container-fluid">
     <div class="row">
       <div style="height: 100vh; background-color: #ded9e2;" class="col-2">
-
         <?php
-        $scan = scandir('home');
-        // Files
-        foreach ($scan as $file) {
-          // Folder
-          if (is_dir("home/$file")) {
-            echo "
-            <form method=\"post\">
-            <button class='folder-button' name=\"$file\" value=\"$file\">
-              <div class='alert cursor-pointer'>
-                <i class='fa fa-solid fa-folder'></i>&nbsp;
-                $file
-              </div>
-            </button>
-            </form>
-            ";
-          }
-        }
-        // $sel = $file;
-        // setcookie("selected", $sel, time() + 2 * 24 * 60 * 60);
+        include '.filemngr/scripts/list_folders.php'
         ?>
       </div>
       <div style="height: 100vh; background-color: #F7F4EA;" class="col-10">
-
         <?php
-
-        // print_r($_POST);
-        $directory = array_keys($_POST)[0];
-        echo "<br>Selected: " . $directory . "<hr>";
-
-        $scan = scandir('home/' . $directory);
-        // Files
-        foreach ($scan as $file) {
-          if (!is_dir("home/$file")) {
-            echo "<button class='file-button'>";
-            echo "<i class='fa fa-solid fa-file'></i>&nbsp;&nbsp;&nbsp;";
-            echo "<a class=\"File-Name\" href='home/$directory/$file'>$file</a>";
-            echo "</button>";
-          }
-        }
-
+        include '.filemngr/scripts/list_files.php'
         ?>
       </div>
     </div>
